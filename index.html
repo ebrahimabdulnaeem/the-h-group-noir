@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B0B0E" />
+  <title>THE H GROUP | Couture Eyewear & Haute Parfumerie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+  <style>
+    :root {
+      --bg-noir: #0B0B0E;
+      --bg-elevated: #131318;
+      --bg-card: #181820;
+      --ink-ivory: #F3F1EC;
+      --ink-silver: #A4A3AC;
+      --ink-dim: #6E6D76;
+      --gold-luxe: #CFA550;
+      --gold-glow: rgba(207, 165, 80, 0.16);
+      --border-glass: rgba(255, 255, 255, 0.09);
+      --radius-outer: 28px;
+      --radius-inner: 21px;
+      --radius-pill: 999px;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-top: env(safe-area-inset-top, 0px);
+    }
+
+    html[dir="rtl"] {
+      --font-display: 'IBM Plex Sans Arabic', sans-serif;
+      --font-sans: 'IBM Plex Sans Arabic', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg-noir);
+      color: var(--ink-ivory);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+
+    body {
+      background: var(--bg-noir);
+      overflow-x: clip;
+    }
+
+    body.lock-scroll { overflow: hidden; }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 38;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: radial-gradient(#FFFFFF 0.7px, transparent 0.7px);
+      background-size: 18px 18px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; border: none; background: none; color: inherit; cursor: pointer; }
+    section[id] { scroll-margin-top: 88px; }
+
+    .container {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Floating Fluid Island Header */
+    .island-header-wrap {
+      position: fixed;
+      top: calc(16px + var(--safe-top));
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      padding: 0 14px;
+      pointer-events: none;
+    }
+
+    .island-nav {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 8px 12px 8px 20px;
+      border-radius: var(--radius-pill);
+      background: rgba(19, 19, 24, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-glass);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 44px rgba(0, 0, 0, 0.5);
+    }
+
+    html[dir="rtl"] .island-nav { padding: 8px 20px 8px 12px; }
+
+    .island-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .noir-burger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .noir-burger-lines {
+      width: 18px;
+      height: 10px;
+      position: relative;
+    }
+
+    .noir-burger-lines span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 1.6px;
+      background: var(--ink-ivory);
+      transition: transform 0.35s var(--ease-spring), top 0.35s var(--ease-spring);
+    }
+
+    .noir-burger-lines span:first-child { top: 1px; }
+    .noir-burger-lines span:last-child { top: 8px; width: 70%; }
+
+    .noir-burger.active .noir-burger-lines span:first-child { top: 4.5px; transform: rotate(45deg); }
+    .noir-burger.active .noir-burger-lines span:last-child { top: 4.5px; width: 100%; transform: rotate(-45deg); }
+
+    .island-brand img { height: 34px; width: auto; display: block; }
+
+    .island-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 13px;
+      color: var(--ink-silver);
+    }
+
+    .island-links a:hover { color: var(--ink-ivory); }
+
+    .island-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .glass-chip {
+      min-height: 38px;
+      padding: 0 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border-glass);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .gold-bag-pill {
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      background: var(--gold-luxe);
+      color: #0B0B0E;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    /* Full-Screen Noir Mobile Menu */
+    .noir-mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 48;
+      background: rgba(11, 11, 14, 0.96);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      padding: calc(92px + var(--safe-top)) 22px calc(100px + var(--safe-bottom));
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-14px);
+      transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+    }
+
+    .noir-mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .noir-mobile-links {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .noir-mobile-links a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 4px;
+      border-bottom: 1px solid var(--border-glass);
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--ink-ivory);
+    }
+
+    /* Double-Bezel Dark Glass */
+    .noir-bezel {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--border-glass);
+      padding: 6px;
+      border-radius: var(--radius-outer);
+    }
+
+    .noir-core {
+      background: var(--bg-elevated);
+      border-radius: var(--radius-inner);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    /* Cinematic Noir Hero */
+    .noir-hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding: 112px 0 64px;
+      overflow: hidden;
+    }
+
+    .noir-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .noir-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.5s var(--ease-out);
+    }
+
+    .noir-hero-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(11, 11, 14, 0.92) 0%, rgba(11, 11, 14, 0.58) 50%, rgba(11, 11, 14, 0.22) 100%),
+                  linear-gradient(0deg, rgba(11, 11, 14, 0.96) 6%, rgba(11, 11, 14, 0.14) 58%);
+    }
+
+    html[dir="rtl"] .noir-hero-scrim {
+      background: linear-gradient(270deg, rgba(11, 11, 14, 0.92) 0%, rgba(11, 11, 14, 0.58) 50%, rgba(11, 11, 14, 0.22) 100%),
+                  linear-gradient(0deg, rgba(11, 11, 14, 0.96) 6%, rgba(11, 11, 14, 0.14) 58%);
+    }
+
+    .noir-hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 32px;
+      align-items: flex-end;
+      width: 100%;
+    }
+
+    .gold-eyebrow {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--gold-glow);
+      border: 1px solid rgba(207, 165, 80, 0.32);
+      color: var(--gold-luxe);
+      font-size: 10.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    html[dir="rtl"] .gold-eyebrow { letter-spacing: 0; font-size: 11.5px; }
+
+    .noir-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      font-weight: 400;
+      line-height: 1.06;
+      margin-bottom: 16px;
+      padding-bottom: 4px;
+    }
+
+    html[dir="rtl"] .noir-h1 {
+      line-height: 1.28;
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
+    }
+
+    .noir-h1 em { font-style: italic; color: var(--gold-luxe); }
+    html[dir="rtl"] .noir-h1 em { font-style: normal; }
+
+    .noir-sub {
+      font-size: 15px;
+      color: var(--ink-silver);
+      max-width: 44ch;
+      line-height: 1.65;
+      margin-bottom: 26px;
+    }
+
+    .btn-gold-island {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 7px 7px 7px 22px;
+      border-radius: var(--radius-pill);
+      background: var(--gold-luxe);
+      color: #0B0B0E;
+      font-size: 13.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: transform 0.35s var(--ease-spring);
+    }
+
+    html[dir="rtl"] .btn-gold-island { padding: 7px 22px 7px 7px; }
+    .btn-gold-island:active { transform: scale(0.97); }
+
+    .btn-gold-island .orb {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(11, 11, 14, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-dock {
+      background: rgba(19, 19, 24, 0.78);
+      border: 1px solid var(--border-glass);
+      border-radius: 22px;
+      padding: 14px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .hero-dock-label {
+      font-size: 11.5px;
+      color: var(--ink-silver);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .dock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .dock-item {
+      border-radius: 13px;
+      overflow: hidden;
+      border: 1.5px solid transparent;
+      background: var(--bg-card);
+      text-align: start;
+      transition: border-color 0.25s var(--ease-out);
+    }
+
+    .dock-item.active { border-color: var(--gold-luxe); }
+    .dock-item img { width: 100%; height: 62px; object-fit: cover; display: block; }
+    .dock-item span { display: block; padding: 6px 8px; font-size: 11px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Sections */
+    .section-noir { padding: 100px 0; }
+
+    .noir-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.05rem, 3.5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.14;
+      margin-bottom: 10px;
+    }
+
+    html[dir="rtl"] .noir-section-title { line-height: 1.32; }
+
+    .noir-section-desc {
+      font-size: 14.5px;
+      color: var(--ink-silver);
+      max-width: 58ch;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    /* Interactive Master-Detail Showroom (Swipeable Stage + Thumb Carousel on Mobile!) */
+    .showroom-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .showroom-stage { position: sticky; top: 94px; }
+
+    .stage-snap-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      aspect-ratio: 4 / 3.2;
+      background: #181820;
+    }
+
+    .stage-snap-track::-webkit-scrollbar { display: none; }
+
+    .stage-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+
+    .stage-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .stage-angle-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-glass);
+    }
+
+    .stage-tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .stage-tabs::-webkit-scrollbar { display: none; }
+
+    .stage-tab {
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-silver);
+      background: rgba(255, 255, 255, 0.06);
+      white-space: nowrap;
+    }
+
+    .stage-tab.active {
+      background: var(--gold-luxe);
+      color: #0B0B0E;
+    }
+
+    .spec-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border-glass);
+      background: var(--bg-elevated);
+    }
+
+    .spec-cell {
+      padding: 14px 16px;
+      border-inline-end: 1px solid var(--border-glass);
+    }
+
+    .spec-cell:last-child { border-inline-end: none; }
+
+    .spec-cell strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--gold-luxe);
+    }
+
+    .spec-cell span { font-size: 11px; color: var(--ink-dim); }
+
+    /* Selector Stack (Vertical on Desktop -> Horizontal Momentum Carousel on Mobile!) */
+    .frame-selector-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .frame-row-card {
+      display: grid;
+      grid-template-columns: 84px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 13px 16px;
+      border-radius: 20px;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-glass);
+      cursor: pointer;
+      transition: border-color 0.25s var(--ease-out), background 0.25s var(--ease-out);
+    }
+
+    .frame-row-card.active {
+      background: #1B1A22;
+      border-color: var(--gold-luxe);
+    }
+
+    .frame-row-card img {
+      width: 84px;
+      height: 66px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #F4F4F1;
+    }
+
+    .frame-row-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .frame-row-lens { font-size: 12px; color: var(--ink-silver); }
+
+    .row-add-btn {
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(207, 165, 80, 0.16);
+      color: var(--gold-luxe);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Editorial Lookbook Portraits (3-Col Grid Desktop -> Smooth Horizontal Snap Deck on Mobile!) */
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .lookbook-img-box {
+      aspect-ratio: 3 / 3.7;
+      overflow: hidden;
+      background: #181820;
+    }
+
+    .lookbook-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .lookbook-caption {
+      padding: 15px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-elevated);
+      font-size: 13.5px;
+    }
+
+    /* Haute Parfumerie Split Curtain */
+    .curtain-split {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+    }
+
+    .curtain-media { min-height: 400px; }
+    .curtain-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .curtain-copy {
+      padding: 38px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .pillar-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pillar-chip {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-glass);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 12px;
+    }
+
+    .noir-input-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .noir-input {
+      flex: 1;
+      min-width: 190px;
+      min-height: 48px;
+      padding: 0 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-glass);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--ink-ivory);
+      font-size: 16px;
+      outline: none;
+    }
+
+    /* Footer */
+    .noir-footer {
+      border-top: 1px solid var(--border-glass);
+      padding: 52px 0 calc(48px + var(--safe-bottom));
+      background: #08080A;
+    }
+
+    .noir-footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Mobile Thumb Tab Bar */
+    .noir-tab-bar { display: none; }
+
+    /* Scrim & Tactile Bottom-Sheet / Drawer */
+    .scrim-dark {
+      position: fixed;
+      inset: 0;
+      z-index: 65;
+      background: rgba(0, 0, 0, 0.68);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease-out);
+    }
+
+    .scrim-dark.open { opacity: 1; pointer-events: auto; }
+
+    .noir-grabber {
+      display: none;
+      width: 42px;
+      height: 4.5px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+      margin: 10px auto 4px;
+    }
+
+    .noir-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 75;
+      width: min(430px, 100vw);
+      background: var(--bg-elevated);
+      border-inline-start: 1px solid var(--border-glass);
+      transform: translateX(102%);
+      transition: transform 0.42s var(--ease-spring);
+      display: flex;
+      flex-direction: column;
+    }
+
+    html[dir="rtl"] .noir-drawer {
+      right: auto;
+      left: 0;
+      transform: translateX(-102%);
+    }
+
+    .noir-drawer.open { transform: translateX(0); }
+
+    .noir-co-box {
+      display: none;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      margin-bottom: 10px;
+    }
+
+    .noir-co-box.active { display: grid; }
+
+    .noir-co-input {
+      width: 100%;
+      min-height: 46px;
+      padding: 0 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border-glass);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--ink-ivory);
+      font-size: 16px;
+      font-family: inherit;
+    }
+
+    .apple-pay-white {
+      min-height: 48px;
+      border-radius: var(--radius-pill);
+      background: #FFFFFF;
+      color: #000000;
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ==========================================================
+       OBSESSIVE MOBILE ARCHITECTURE (< 900px)
+       ========================================================== */
+    @media (max-width: 900px) {
+      .container { padding: 0 16px; }
+      .island-links { display: none; }
+      .noir-burger { display: inline-flex; }
+      .island-nav {
+        width: 100%;
+        max-width: 520px;
+        padding: 7px 10px;
+        gap: 10px;
+      }
+      .island-brand img { height: 30px; }
+
+      .noir-hero {
+        min-height: 92svh;
+        padding: 96px 0 28px;
+      }
+
+      .noir-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .noir-h1 { font-size: clamp(2.2rem, 8.8vw, 2.9rem); }
+      html[dir="rtl"] .noir-h1 { font-size: clamp(1.85rem, 7.2vw, 2.35rem); }
+      .noir-sub { font-size: 14px; margin-bottom: 18px; }
+      .btn-gold-island { width: 100%; }
+
+      .section-noir { padding: 56px 0; }
+      .noir-section-desc { margin-bottom: 24px; }
+
+      /* Mobile Showroom: Stage on top + Thumb-Swipe Horizontal Selector Rail right beneath it! */
+      .showroom-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .showroom-stage { position: static; }
+      .stage-snap-track { aspect-ratio: 4 / 3.35; }
+
+      .stage-angle-bar {
+        padding: 12px 14px;
+      }
+
+      #stageAddBtn { width: 100%; }
+
+      .frame-selector-list {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        gap: 10px;
+        padding: 4px 2px 8px;
+      }
+
+      .frame-selector-list::-webkit-scrollbar { display: none; }
+
+      .frame-row-card {
+        flex: 0 0 78%;
+        max-width: 300px;
+        scroll-snap-align: start;
+        grid-template-columns: 68px 1fr;
+        gap: 12px;
+        padding: 12px;
+      }
+
+      .frame-row-card img { width: 68px; height: 56px; }
+      .frame-row-title { font-size: 17.5px; }
+      .frame-row-action {
+        grid-column: 1 / -1;
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: center !important;
+        padding-top: 8px;
+        border-top: 1px solid var(--border-glass);
+      }
+
+      /* Mobile Lookbook: Horizontal Magazine Swipe Carousel */
+      .lookbook-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        gap: 14px;
+      }
+
+      .lookbook-grid::-webkit-scrollbar { display: none; }
+
+      .lookbook-plate {
+        flex: 0 0 78%;
+        max-width: 310px;
+        scroll-snap-align: center;
+      }
+
+      .curtain-split { grid-template-columns: 1fr; }
+      .curtain-media { min-height: 260px; max-height: 300px; }
+      .curtain-copy { padding: 24px 18px; }
+
+      .noir-footer {
+        padding-bottom: calc(98px + var(--safe-bottom));
+      }
+
+      /* Tactile Bottom Sheet Cart on Mobile */
+      .noir-grabber { display: block; }
+      .noir-drawer {
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-height: 90dvh;
+        border-radius: 26px 26px 0 0;
+        border-inline-start: none;
+        border-top: 1px solid var(--border-glass);
+        transform: translateY(104%) !important;
+      }
+
+      .noir-drawer.open { transform: translateY(0) !important; }
+
+      /* Single Thumb-Zone Mobile Bottom Tab Bar */
+      .noir-tab-bar {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: calc(10px + var(--safe-bottom));
+        z-index: 46;
+        height: 58px;
+        border-radius: 999px;
+        background: rgba(22, 22, 28, 0.92);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border: 1px solid var(--border-glass);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        align-items: center;
+        padding: 0 6px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+        transition: transform 0.3s var(--ease-out), opacity 0.25s var(--ease-out);
+      }
+
+      body.lock-scroll .noir-tab-bar {
+        transform: translateY(130%);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .n-tab {
+        height: 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        font-size: 10.5px;
+        color: var(--ink-silver);
+      }
+
+      .n-tab i { font-size: 19px; }
+      .n-tab.gold { color: var(--gold-luxe); font-weight: 600; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Fluid Island Nav -->
+  <div class="island-header-wrap">
+    <header class="island-nav">
+      <div class="island-left">
+        <button type="button" class="noir-burger" id="burgerBtn" aria-label="Menu">
+          <div class="noir-burger-lines"><span></span><span></span></div>
+        </button>
+        <a href="#" class="island-brand" aria-label="The H Group">
+          <img src="assets/brand/logo-gold-transparent.png" alt="The H Group" />
+        </a>
+      </div>
+
+      <nav class="island-links">
+        <a href="#showroom" data-i18n="navShowroom">Atelier Showroom</a>
+        <a href="#lookbook" data-i18n="navLookbook">Unisex Lookbook</a>
+        <a href="#universe" data-i18n="navUniverse">Haute Parfumerie</a>
+      </nav>
+
+      <div class="island-actions">
+        <button type="button" class="glass-chip" id="langBtn">
+          <i class="ph ph-translate"></i>
+          <span id="langLabel">العربية</span>
+        </button>
+        <button type="button" class="gold-bag-pill" id="openBagBtn" aria-label="Bag">
+          <i class="ph ph-handbag"></i>
+          <span id="bagCount">1</span>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <!-- Full-Screen Mobile Menu -->
+  <div class="noir-mobile-menu" id="mobileMenu">
+    <ul class="noir-mobile-links">
+      <li><a href="#showroom" onclick="toggleMenu(false)"><span data-i18n="navShowroom">Atelier Showroom</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="#lookbook" onclick="toggleMenu(false)"><span data-i18n="navLookbook">Unisex Lookbook</span><i class="ph ph-arrow-up-right"></i></a></li>
+      <li><a href="#universe" onclick="toggleMenu(false)"><span data-i18n="navUniverse">Haute Parfumerie</span><i class="ph ph-arrow-up-right"></i></a></li>
+    </ul>
+    <div class="noir-bezel">
+      <div class="noir-core" style="padding:18px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <div>
+          <strong style="font-size:14px; display:block;" data-i18n="vipDesk">Private Client Concierge</strong>
+          <span style="font-size:12px; color:var(--ink-silver);">Dubai & Abu Dhabi · AED</span>
+        </div>
+        <a href="https://wa.me/971567021940" target="_blank" rel="noopener" class="row-add-btn" style="background:var(--gold-luxe); color:#0B0B0E; display:inline-flex; align-items:center; gap:6px;">
+          <i class="ph-fill ph-whatsapp-logo"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Noir Hero -->
+    <section class="noir-hero">
+      <div class="noir-hero-bg">
+        <img id="heroBgImg" src="assets/products/hero_noir_atelier.jpg" alt="The H Group Noir Atelier" fetchpriority="high" />
+        <div class="noir-hero-scrim"></div>
+      </div>
+
+      <div class="container noir-hero-grid">
+        <div>
+          <span class="gold-eyebrow" data-i18n="heroBadge">Dubai · Couture Eyewear & Maison</span>
+          <h1 class="noir-h1" data-i18n-html="heroTitle">
+            Crafted in shadow, crowned in <em>gold</em>.
+          </h1>
+          <p class="noir-sub" data-i18n="heroSub">
+            Architectural unisex eyewear sculpted in 18k gold hardware and high-clarity sun lenses, built for quiet certainty.
+          </p>
+          <a href="#showroom" class="btn-gold-island">
+            <span data-i18n="heroCta">Enter Interactive Showroom</span>
+            <span class="orb"><i class="ph ph-arrow-down-right"></i></span>
+          </a>
+        </div>
+
+        <div class="hero-dock">
+          <div class="hero-dock-label">
+            <span data-i18n="dockLabel">Spotlight Editions</span>
+            <span style="color:var(--gold-luxe); font-weight:600;">AED 1,290 - 1,590</span>
+          </div>
+          <div class="dock-cards">
+            <button type="button" class="dock-item active" onclick="swapHeroBg('assets/products/hero_noir_atelier.jpg', 'p01', this)">
+              <img src="assets/products/p01_studio.jpg" alt="H-01" />
+              <span>H-01 Sunset</span>
+            </button>
+            <button type="button" class="dock-item" onclick="swapHeroBg('assets/products/p02_detail.jpg', 'p02', this)">
+              <img src="assets/products/p02_studio.jpg" alt="H-02" />
+              <span>H-02 Octa Noir</span>
+            </button>
+            <button type="button" class="dock-item" onclick="swapHeroBg('assets/products/p06_detail.jpg', 'p06', this)">
+              <img src="assets/products/p06_studio.jpg" alt="H-06" />
+              <span>H-06 Sovereign</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Showroom Stage -->
+    <section id="showroom" class="section-noir">
+      <div class="container">
+        <h2 class="noir-section-title reveal" data-i18n="showroomTitle">The Six Signature Silhouettes</h2>
+        <p class="noir-section-desc reveal" data-i18n="showroomDesc">
+          Swipe the stage sideways for Studio, Gold Detail, and On-Model angles, or swipe the frame cards below to switch silhouettes.
+        </p>
+
+        <div class="showroom-grid">
+          <div class="noir-bezel showroom-stage reveal">
+            <div class="noir-core">
+              <div class="stage-snap-track" id="stageTrack"></div>
+              <div class="stage-angle-bar">
+                <div class="stage-tabs" id="stageAngleTabs">
+                  <button type="button" class="stage-tab active" onclick="scrollStageTo(0)" data-i18n="tabStudio">Studio Profile</button>
+                  <button type="button" class="stage-tab" onclick="scrollStageTo(1)" data-i18n="tabDetail">Gold Detail</button>
+                  <button type="button" class="stage-tab" onclick="scrollStageTo(2)" data-i18n="tabModel">On-Model</button>
+                </div>
+                <button type="button" class="btn-gold-island" id="stageAddBtn" style="min-height:44px; padding: 5px 5px 5px 18px; font-size: 12.5px;">
+                  <span id="stageAddLabel">Add H-01 · AED 1,290</span>
+                  <span class="orb" style="width:32px;height:32px;"><i class="ph ph-plus"></i></span>
+                </button>
+              </div>
+              <div class="spec-strip">
+                <div class="spec-cell">
+                  <strong id="specMeasure">54-18-145</strong>
+                  <span data-i18n="specDimLabel">Millimeters</span>
+                </div>
+                <div class="spec-cell">
+                  <strong id="specMaterial">18K Gold</strong>
+                  <span data-i18n="specMatLabel">Micron Plated</span>
+                </div>
+                <div class="spec-cell">
+                  <strong id="specProtection">UV400</strong>
+                  <span data-i18n="specUvLabel">Optical Nylon</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="frame-selector-list" id="selectorList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unisex Editorial Lookbook -->
+    <section id="lookbook" class="section-noir" style="padding-top: 12px;">
+      <div class="container">
+        <h2 class="noir-section-title reveal" data-i18n="lookbookTitle">Worn Across the Emirates</h2>
+        <p class="noir-section-desc reveal" data-i18n="lookbookDesc">
+          Swipe through unisex editorial portraits. Tap any look to load its frame onto the showroom stage.
+        </p>
+
+        <div class="lookbook-grid" id="lookbookGrid"></div>
+      </div>
+    </section>
+
+    <!-- House Expansion Curtain -->
+    <section id="universe" class="section-noir" style="padding-top: 12px;">
+      <div class="container">
+        <div class="noir-bezel reveal">
+          <div class="noir-core curtain-split">
+            <div class="curtain-media">
+              <img src="assets/products/atelier_parfums_teaser.jpg" alt="The H Group Haute Parfumerie" loading="lazy" />
+            </div>
+            <div class="curtain-copy">
+              <div>
+                <span class="gold-eyebrow" data-i18n="universeBadge">House Expansion</span>
+                <h2 class="noir-section-title" style="font-size: clamp(1.9rem, 2.9vw, 2.75rem);" data-i18n="universeTitle">
+                  Beyond Eyewear: Haute Parfumerie & Sartorial Objects
+                </h2>
+                <p style="font-size:14px; color:var(--ink-silver); line-height:1.7; margin-top:10px;" data-i18n="universeBody">
+                  Built from day one as a multi-category luxury house in the UAE. Following our inaugural eyewear edition, The H Group introduces aged oud extraits, fine textiles, and tailored essentials.
+                </p>
+
+                <div class="pillar-chips">
+                  <span class="pillar-chip" data-i18n="chip1">Architectural Eyewear (Live)</span>
+                  <span class="pillar-chip" data-i18n="chip2">Extrait de Parfum (Next)</span>
+                  <span class="pillar-chip" data-i18n="chip3">Luxury Tees & Fine Fabrics</span>
+                </div>
+              </div>
+
+              <form class="noir-input-row" onsubmit="event.preventDefault(); this.querySelector('button span').textContent = currentLang === 'ar' ? 'تم التسجيل' : 'Registered'; this.reset();">
+                <label for="vipEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;">Email</label>
+                <input id="vipEmail" type="email" required class="noir-input" placeholder="Private client email" />
+                <button type="submit" class="btn-gold-island" style="padding: 0 22px;">
+                  <span data-i18n="joinPrivate">Join Private List</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="noir-footer">
+    <div class="container noir-footer-row">
+      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+        <img src="assets/brand/logo-gold-transparent.png" alt="The H Group" style="height:40px;" />
+        <span style="font-size:13px; color:var(--ink-silver);" data-i18n="footerCopy">
+          THE H GROUP · United Arab Emirates · Eyewear, Parfums & Sartorial House
+        </span>
+      </div>
+      <div style="font-size:12px; color:var(--ink-dim);">
+        Apple Pay · Visa · Mastercard · Tabby (4x) · Cash on Delivery (AED)
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Thumb-Zone Bottom Tab Bar -->
+  <nav class="noir-tab-bar" aria-label="Mobile Navigation">
+    <a href="#showroom" class="n-tab gold">
+      <i class="ph ph-sunglasses"></i>
+      <span data-i18n="mobShowroom">Showroom</span>
+    </a>
+    <a href="#lookbook" class="n-tab">
+      <i class="ph ph-camera"></i>
+      <span data-i18n="mobLookbook">Lookbook</span>
+    </a>
+    <a href="#universe" class="n-tab">
+      <i class="ph ph-sparkle"></i>
+      <span data-i18n="mobParfums">Parfums</span>
+    </a>
+    <button type="button" class="n-tab" onclick="openCart()">
+      <i class="ph ph-handbag"></i>
+      <span><span data-i18n="mobBag">Bag</span> (<span id="mobBagCount">1</span>)</span>
+    </button>
+  </nav>
+
+  <!-- Scrim & Tactile Bottom-Sheet / Side Cart -->
+  <div class="scrim-dark" id="scrim" onclick="closeCart()"></div>
+  <aside class="noir-drawer" id="cartDrawer" aria-label="Shopping bag">
+    <div class="noir-grabber"></div>
+    <div style="padding:18px 22px; border-bottom:1px solid var(--border-glass); display:flex; justify-content:space-between; align-items:center;">
+      <strong data-i18n="bagHeading">Private Client Bag</strong>
+      <button type="button" onclick="closeCart()" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:18px;"><i class="ph ph-x"></i></button>
+    </div>
+    <div id="cartList" style="flex:1; overflow-y:auto; padding:18px 22px; display:grid; gap:14px; align-content:start;"></div>
+    <div style="padding:18px 22px calc(18px + var(--safe-bottom)); border-top:1px solid var(--border-glass); background:#0E0E12;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:14px; font-weight:700;">
+        <span data-i18n="totalLabel">Total (VAT Incl.)</span>
+        <span id="cartTotal" style="color:var(--gold-luxe);">AED 1,290</span>
+      </div>
+
+      <div class="noir-co-box" id="noirCoBox">
+        <strong style="font-size:13px; color:var(--gold-luxe);" data-i18n="expressTitle">UAE Express Same-Day Dispatch</strong>
+        <input type="text" class="noir-co-input" placeholder="Full Name" />
+        <input type="tel" class="noir-co-input" placeholder="+971 5X XXX XXXX" />
+        <select class="noir-co-input">
+          <option value="Dubai">Dubai (Same-Day Courier)</option>
+          <option value="Abu Dhabi">Abu Dhabi (Same-Day Courier)</option>
+          <option value="Sharjah">Sharjah</option>
+          <option value="Other">Other Emirates</option>
+        </select>
+        <button type="button" class="btn-gold-island" style="width:100%;" onclick="finishNoirOrder()">
+          <span id="noirConfirmTxt" data-i18n="confirmBtn">Confirm UAE Order</span>
+          <span class="orb"><i class="ph ph-check"></i></span>
+        </button>
+      </div>
+
+      <div id="noirPayActions" style="display:grid; gap:8px;">
+        <button type="button" class="apple-pay-white" onclick="openNoirCheckout()">
+          <i class="ph-fill ph-apple-logo" style="font-size:19px;"></i> Pay
+        </button>
+        <button type="button" class="btn-gold-island" style="width:100%;" onclick="openNoirCheckout()">
+          <span data-i18n="checkoutBtn">Express UAE Checkout</span>
+          <span class="orb"><i class="ph ph-lock-key"></i></span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    const PRODUCTS = [
+      {
+        id: 'p01',
+        code: 'H-01',
+        nameEn: 'H-01 Aura Sunset',
+        nameAr: 'H-01 أورا غروب متدرج',
+        lensEn: 'Smoke to Warm Amber Gradient',
+        lensAr: 'عدسات متدرجة من الدخاني إلى العنبر',
+        measure: '54-18-145',
+        price: 1290,
+        studio: 'assets/products/p01_studio.jpg',
+        detail: 'assets/products/p01_detail.jpg',
+        model: 'assets/products/p01_model.jpg'
+      },
+      {
+        id: 'p02',
+        code: 'H-02',
+        nameEn: 'H-02 Octa Noir',
+        nameAr: 'H-02 أوكتا نوار المضلع',
+        lensEn: 'Brushed Gold & Black Rim · Smoke',
+        lensAr: 'إطار هندسي ذهبي وأسود · دخاني داكن',
+        measure: '52-19-145',
+        price: 1450,
+        studio: 'assets/products/p02_studio.jpg',
+        detail: 'assets/products/p02_detail.jpg',
+        model: 'assets/products/p02_model.jpg'
+      },
+      {
+        id: 'p03',
+        code: 'H-03',
+        nameEn: 'H-03 Mirage Slate',
+        nameAr: 'H-03 ميراج رمادي متدرج',
+        lensEn: 'Rimless Gold · Silver-Slate Ombre',
+        lensAr: 'بدون إطار · عدسات رمادية فضية متدرجة',
+        measure: '55-18-145',
+        price: 1290,
+        studio: 'assets/products/p03_studio.jpg',
+        detail: 'assets/products/p03_detail.jpg',
+        model: 'assets/products/p03_model.jpg'
+      },
+      {
+        id: 'p04',
+        code: 'H-04',
+        nameEn: 'H-04 Soleil Champagne',
+        nameAr: 'H-04 سوليه شامبين شفاف',
+        lensEn: 'Rimless Gold · Sheer Honey Tint',
+        lensAr: 'بدون إطار · شامبين عسلي للنهار والمساء',
+        measure: '54-18-145',
+        price: 1320,
+        studio: 'assets/products/p04_studio.jpg',
+        detail: 'assets/products/p04_detail.jpg',
+        model: 'assets/products/p04_model.jpg'
+      },
+      {
+        id: 'p05',
+        code: 'H-05',
+        nameEn: 'H-05 Veloce Dusk',
+        nameAr: 'H-05 فيلوتشي النحيفة',
+        lensEn: 'Slim Narrow Rimless · Dusky Plum',
+        lensAr: 'قصة مستطيلة نحيفة · دخاني بنفسجي',
+        measure: '56-17-142',
+        price: 1250,
+        studio: 'assets/products/p05_studio.jpg',
+        detail: 'assets/products/p05_detail.jpg',
+        model: 'assets/products/p05_model.jpg'
+      },
+      {
+        id: 'p06',
+        code: 'H-06',
+        nameEn: 'H-06 Sovereign Crystal',
+        nameAr: 'H-06 سوفرين المنقوشة',
+        lensEn: 'Engraved Gold Bridge · Crystal Grey',
+        lensAr: 'جسر ذهبي منقوش · كريستال رمادي فاتح',
+        measure: '54-18-145',
+        price: 1590,
+        studio: 'assets/products/p06_studio.jpg',
+        detail: 'assets/products/p06_detail.jpg',
+        model: 'assets/products/p06_model.jpg'
+      }
+    ];
+
+    const I18N = {
+      en: {
+        navShowroom: 'Atelier Showroom',
+        navLookbook: 'Unisex Lookbook',
+        navUniverse: 'Haute Parfumerie',
+        mobShowroom: 'Showroom',
+        mobLookbook: 'Lookbook',
+        mobParfums: 'Parfums',
+        mobBag: 'Bag',
+        vipDesk: 'Private Client Concierge',
+        heroBadge: 'Dubai · Couture Eyewear & Maison',
+        heroTitle: 'Crafted in shadow, crowned in <em>gold</em>.',
+        heroSub: 'Architectural unisex eyewear sculpted in 18k gold hardware and high-clarity sun lenses, built for quiet certainty.',
+        heroCta: 'Enter Interactive Showroom',
+        dockLabel: 'Spotlight Editions',
+        showroomTitle: 'The Six Signature Silhouettes',
+        showroomDesc: 'Swipe the stage sideways for Studio, Gold Detail, and On-Model angles, or swipe the frame cards below to switch silhouettes.',
+        tabStudio: 'Studio Profile',
+        tabDetail: 'Gold Detail',
+        tabModel: 'On-Model',
+        specDimLabel: 'Millimeters',
+        specMatLabel: 'Micron Plated',
+        specUvLabel: 'Optical Nylon',
+        lookbookTitle: 'Worn Across the Emirates',
+        lookbookDesc: 'Swipe through unisex editorial portraits. Tap any look to load its frame onto the showroom stage.',
+        universeBadge: 'House Expansion',
+        universeTitle: 'Beyond Eyewear: Haute Parfumerie & Sartorial Objects',
+        universeBody: 'Built from day one as a multi-category luxury house in the UAE. Following our inaugural eyewear edition, The H Group introduces aged oud extraits, fine textiles, and tailored essentials.',
+        chip1: 'Architectural Eyewear (Live)',
+        chip2: 'Extrait de Parfum (Next)',
+        chip3: 'Luxury Tees & Fine Fabrics',
+        joinPrivate: 'Join Private List',
+        footerCopy: 'THE H GROUP · United Arab Emirates · Eyewear, Parfums & Sartorial House',
+        bagHeading: 'Private Client Bag',
+        totalLabel: 'Total (VAT Incl.)',
+        checkoutBtn: 'Express UAE Checkout',
+        expressTitle: 'UAE Express Same-Day Dispatch',
+        confirmBtn: 'Confirm UAE Order'
+      },
+      ar: {
+        navShowroom: 'صالة العرض التفاعلية',
+        navLookbook: 'إطلالات الجنسين',
+        navUniverse: 'العطور والأزياء',
+        mobShowroom: 'الصالة',
+        mobLookbook: 'الإطلالات',
+        mobParfums: 'العطور',
+        mobBag: 'الحقيبة',
+        vipDesk: 'مستشار العملاء الخاص',
+        heroBadge: 'دبي · دار النظارات والعطور الفاخرة',
+        heroTitle: 'صيغت في الظل، وتُوّجت <em>بالذهب</em>.',
+        heroSub: 'نظارات معمارية للرجال والنساء بمعدن مطلي بالذهب عيار 18 وعدسات فائقة النقاء، صُممت لأصحاب الحضور الواثق.',
+        heroCta: 'ادخل صالة العرض التفاعلية',
+        dockLabel: 'إصدارات مختارة',
+        showroomTitle: 'الستة موديلات الرئيسية',
+        showroomDesc: 'اسحب منصة العرض يميناً ويساراً لمشاهدة الاستوديو وتفاصيل الذهب والموديل، أو اسحب بطاقات النظارات بالأسفل للتبديل.',
+        tabStudio: 'زاوية الاستوديو',
+        tabDetail: 'تفاصيل الذهب',
+        tabModel: 'على الموديل',
+        specDimLabel: 'المقاس بالمليمتر',
+        specMatLabel: 'طلاء ذهب 18',
+        specUvLabel: 'نايلون بصري',
+        lookbookTitle: 'إطلالات النخبة في الإمارات',
+        lookbookDesc: 'اسحب لاستعراض إطلالات الرجال والنساء، واضغط على أي صورة لعرض النظارة على المنصة.',
+        universeBadge: 'توسع الدار',
+        universeTitle: 'ما بعد النظارات: العطور الفاخرة والأزياء المختارة',
+        universeBody: 'بُنيت هوية ذا إتش جروب لتستوعب خطوط العطور الشرقية والفرنسية والتيشيرتات والأقمشة الفاخرة تحت سقف متجر واحد.',
+        chip1: 'النظارات الفاخرة (متاح الآن)',
+        chip2: 'العطور الخاصة (الإصدار القادم)',
+        chip3: 'التيشيرتات والأقمشة الراقية',
+        joinPrivate: 'سجّل في القائمة الخاصة',
+        footerCopy: 'THE H GROUP · الإمارات العربية المتحدة · دار النظارات والعطور والأزياء',
+        bagHeading: 'حقيبة المقتنيات',
+        totalLabel: 'الإجمالي (شامل الضريبة)',
+        checkoutBtn: 'إتمام الطلب السريع',
+        expressTitle: 'شحن سريع داخل الإمارات',
+        confirmBtn: 'تأكيد الطلب الآن'
+      }
+    };
+
+    let currentLang = 'en';
+    let selectedId = 'p01';
+    let cart = [{ id: 'p01', qty: 1 }];
+
+    function swapHeroBg(src, pid, btn) {
+      document.getElementById('heroBgImg').src = src;
+      document.querySelectorAll('.dock-item').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectFrame(pid);
+    }
+
+    function toggleMenu(force) {
+      const m = document.getElementById('mobileMenu');
+      const b = document.getElementById('burgerBtn');
+      const next = typeof force === 'boolean' ? force : !m.classList.contains('open');
+      m.classList.toggle('open', next);
+      b.classList.toggle('active', next);
+      document.body.classList.toggle('lock-scroll', next);
+    }
+
+    document.getElementById('burgerBtn').addEventListener('click', () => toggleMenu());
+
+    function renderShowroom() {
+      const p = PRODUCTS.find(x => x.id === selectedId);
+      const title = currentLang === 'ar' ? p.nameAr : p.nameEn;
+      const track = document.getElementById('stageTrack');
+      track.innerHTML = [p.studio, p.detail, p.model].map(src => `
+        <div class="stage-slide"><img src="${src}" alt="${title}" /></div>
+      `).join('');
+      track.scrollLeft = 0;
+
+      const tabs = document.querySelectorAll('#stageAngleTabs .stage-tab');
+      tabs.forEach((t, i) => t.classList.toggle('active', i === 0));
+
+      track.onscroll = () => {
+        const idx = Math.min(2, Math.max(0, Math.round(Math.abs(track.scrollLeft) / (track.clientWidth || 1))));
+        tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+      };
+
+      document.getElementById('specMeasure').textContent = p.measure;
+      document.getElementById('stageAddLabel').textContent = currentLang === 'ar'
+        ? `أضف ${p.code} · AED ${p.price.toLocaleString()}`
+        : `Add ${p.code} · AED ${p.price.toLocaleString()}`;
+      document.getElementById('stageAddBtn').onclick = () => addToBag(p.id);
+
+      const listEl = document.getElementById('selectorList');
+      listEl.innerHTML = PRODUCTS.map(item => {
+        const name = currentLang === 'ar' ? item.nameAr : item.nameEn;
+        const lens = currentLang === 'ar' ? item.lensAr : item.lensEn;
+        return `
+          <div class="frame-row-card ${item.id === selectedId ? 'active' : ''}" onclick="selectFrame('${item.id}')">
+            <img src="${item.studio}" alt="${name}" loading="lazy" />
+            <div>
+              <div class="frame-row-title">${name}</div>
+              <div class="frame-row-lens">${lens}</div>
+            </div>
+            <div class="frame-row-action" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+              <strong style="font-size:14px; color:var(--ink-ivory);">AED ${item.price.toLocaleString()}</strong>
+              <button type="button" class="row-add-btn" onclick="event.stopPropagation(); addToBag('${item.id}')">
+                ${currentLang === 'ar' ? '+ أضف' : '+ Bag'}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function scrollStageTo(idx) {
+      const track = document.getElementById('stageTrack');
+      const dirFactor = currentLang === 'ar' ? -1 : 1;
+      track.scrollTo({ left: idx * track.clientWidth * dirFactor, behavior: 'smooth' });
+    }
+
+    function renderLookbook() {
+      const box = document.getElementById('lookbookGrid');
+      box.innerHTML = PRODUCTS.map(p => {
+        const title = currentLang === 'ar' ? p.nameAr : p.nameEn;
+        return `
+          <article class="noir-bezel lookbook-plate reveal in-view" onclick="selectFrame('${p.id}'); document.getElementById('showroom').scrollIntoView({behavior:'smooth'});">
+            <div class="noir-core">
+              <div class="lookbook-img-box">
+                <img src="${p.model}" alt="${title}" loading="lazy" />
+              </div>
+              <div class="lookbook-caption">
+                <strong>${title}</strong>
+                <span style="color:var(--gold-luxe); font-weight:700;">AED ${p.price.toLocaleString()}</span>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function selectFrame(id) {
+      selectedId = id;
+      renderShowroom();
+    }
+
+    function openCart() {
+      toggleMenu(false);
+      document.body.classList.add('lock-scroll');
+      document.getElementById('scrim').classList.add('open');
+      document.getElementById('cartDrawer').classList.add('open');
+    }
+
+    function closeCart() {
+      document.body.classList.remove('lock-scroll');
+      document.getElementById('scrim').classList.remove('open');
+      document.getElementById('cartDrawer').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('burgerBtn').classList.remove('active');
+    }
+
+    function addToBag(id) {
+      const found = cart.find(x => x.id === id);
+      if (found) found.qty += 1;
+      else cart.push({ id, qty: 1 });
+      renderBag();
+      openCart();
+    }
+
+    function changeQty(id, d) {
+      const idx = cart.findIndex(x => x.id === id);
+      if (idx === -1) return;
+      cart[idx].qty += d;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      renderBag();
+    }
+
+    function renderBag() {
+      const count = cart.reduce((s, x) => s + x.qty, 0);
+      document.getElementById('bagCount').textContent = count;
+      document.getElementById('mobBagCount').textContent = count;
+      let total = 0;
+      const box = document.getElementById('cartList');
+      if (cart.length === 0) {
+        box.innerHTML = `<p style="color:var(--ink-dim); font-size:14px;">${currentLang === 'ar' ? 'الحقيبة فارغة حالياً.' : 'Your bag is currently empty.'}</p>`;
+      } else {
+        box.innerHTML = cart.map(item => {
+          const p = PRODUCTS.find(x => x.id === item.id);
+          total += p.price * item.qty;
+          const title = currentLang === 'ar' ? p.nameAr : p.nameEn;
+          return `
+            <div style="display:grid; grid-template-columns:72px 1fr auto; gap:12px; align-items:center; padding-bottom:14px; border-bottom:1px solid var(--border-glass);">
+              <img src="${p.studio}" alt="${title}" style="width:72px;height:60px;object-fit:cover;border-radius:12px;" />
+              <div>
+                <strong style="font-size:14px;display:block;margin-bottom:3px;">${title}</strong>
+                <span style="font-size:12px;color:var(--gold-luxe);">AED ${p.price.toLocaleString()}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <button type="button" onclick="changeQty('${p.id}', -1)" style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.09);font-weight:700;">-</button>
+                <span style="font-size:13.5px;font-weight:700;">${item.qty}</span>
+                <button type="button" onclick="changeQty('${p.id}', 1)" style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.09);font-weight:700;">+</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+      document.getElementById('cartTotal').textContent = `AED ${total.toLocaleString()}`;
+    }
+
+    function openNoirCheckout() {
+      if (cart.length === 0) return;
+      document.getElementById('noirCoBox').classList.add('active');
+      document.getElementById('noirPayActions').style.display = 'none';
+    }
+
+    function finishNoirOrder() {
+      const lbl = document.getElementById('noirConfirmTxt');
+      lbl.textContent = currentLang === 'ar' ? 'تم تأكيد طلبك · سنتواصل معك فوراً' : 'Order Confirmed · Concierge Notified';
+      setTimeout(() => {
+        cart = [];
+        renderBag();
+        document.getElementById('noirCoBox').classList.remove('active');
+        document.getElementById('noirPayActions').style.display = 'grid';
+        lbl.textContent = I18N[currentLang].confirmBtn;
+        closeCart();
+      }, 1600);
+    }
+
+    // Swipe-down dismiss on mobile cart sheet
+    (function attachSwipe() {
+      const sheet = document.getElementById('cartDrawer');
+      let startY = 0, deltaY = 0;
+      sheet.addEventListener('touchstart', (e) => {
+        if (sheet.scrollTop > 4) return;
+        startY = e.touches[0].clientY;
+        deltaY = 0;
+      }, { passive: true });
+      sheet.addEventListener('touchmove', (e) => {
+        if (!startY) return;
+        deltaY = e.touches[0].clientY - startY;
+        if (deltaY > 0 && window.innerWidth <= 900) {
+          sheet.style.setProperty('transform', `translateY(${deltaY}px)`, 'important');
+        }
+      }, { passive: true });
+      sheet.addEventListener('touchend', () => {
+        sheet.style.removeProperty('transform');
+        if (deltaY > 95 && window.innerWidth <= 900) closeCart();
+        startY = 0; deltaY = 0;
+      });
+    })();
+
+    function applyLang() {
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+      document.getElementById('langLabel').textContent = currentLang === 'ar' ? 'EN' : 'العربية';
+      const dict = I18N[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (dict[k]) el.textContent = dict[k];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const k = el.getAttribute('data-i18n-html');
+        if (dict[k]) el.innerHTML = dict[k];
+      });
+      renderShowroom();
+      renderLookbook();
+      renderBag();
+    }
+
+    document.getElementById('langBtn').addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      applyLang();
+    });
+
+    document.getElementById('openBagBtn').addEventListener('click', openCart);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCart();
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, { threshold: 0.1 });
+
+    renderShowroom();
+    renderLookbook();
+    renderBag();
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
